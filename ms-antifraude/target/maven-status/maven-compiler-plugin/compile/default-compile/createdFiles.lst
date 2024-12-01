@@ -1,0 +1,15 @@
+com\prueba\antifraude\msantifraude\model\TransactionNew$TransactionNewBuilder.class
+com\prueba\antifraude\msantifraude\util\TipoTransaction.class
+com\prueba\antifraude\msantifraude\model\TransactionType$TransactionTypeBuilder.class
+com\prueba\antifraude\msantifraude\model\TransactionValidate$TransactionValidateBuilder.class
+com\prueba\antifraude\msantifraude\config\KafkaConfig.class
+com\prueba\antifraude\msantifraude\Kafka\KafkaConsumer.class
+com\prueba\antifraude\msantifraude\service\impl\AntiFraudeServiceImpl.class
+com\prueba\antifraude\msantifraude\model\TransactionNew.class
+com\prueba\antifraude\msantifraude\MsAntifraudeApplication.class
+com\prueba\antifraude\msantifraude\util\StatusTransaction.class
+com\prueba\antifraude\msantifraude\model\TransactionType.class
+com\prueba\antifraude\msantifraude\model\TransactionStatus$TransactionStatusBuilder.class
+com\prueba\antifraude\msantifraude\model\TransactionStatus.class
+com\prueba\antifraude\msantifraude\service\AntiFraudeService.class
+com\prueba\antifraude\msantifraude\model\TransactionValidate.class
