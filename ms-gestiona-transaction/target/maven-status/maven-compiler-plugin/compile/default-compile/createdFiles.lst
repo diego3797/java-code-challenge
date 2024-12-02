@@ -1,5 +1,4 @@
 com\prueba\crea\msgestionatransaction\model\TransactionType$TransactionTypeBuilder.class
-com\prueba\crea\msgestionatransaction\config\DataSourceConfig.class
 com\prueba\crea\msgestionatransaction\Kafka\KafkaConsumer.class
 com\prueba\crea\msgestionatransaction\model\TransactionStatus$TransactionStatusBuilder.class
 com\prueba\crea\msgestionatransaction\model\Transaction.class

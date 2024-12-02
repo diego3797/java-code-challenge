@@ -1,4 +1,3 @@
-com\prueba\antifraude\msantifraude\config\DataSourceConfig.class
 com\prueba\antifraude\msantifraude\model\TransactionNew$TransactionNewBuilder.class
 com\prueba\antifraude\msantifraude\util\TipoTransaction.class
 com\prueba\antifraude\msantifraude\model\TransactionType$TransactionTypeBuilder.class

@@ -2,24 +2,24 @@ server:
   port: 8080
 spring:
   kafka:
-    bootstrapServers: localhost:9092
+    bootstrap:
+      servers: ${KAFKA_BOOTSTRAPSERVERS:kafka:29092}
   application:
     name: ms-gestiona-transaction
   datasource:
-    url: jdbc:postgresql://localhost:5432/BdPrueba
-    username: postgres
-    password: 1234
-    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/BdPrueba}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:1234}
     hikari:
       maximum-pool-size: 5
       minimum-idle: 2
       idle-timeout: 30000
       max-lifetime: 1800000
       connection-timeout: 20000
-      pool-name: PoolTransaction
   jpa:
     database: POSTGRESQL
     generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
