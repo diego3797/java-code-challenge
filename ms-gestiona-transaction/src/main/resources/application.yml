@@ -1,15 +1,18 @@
 server:
   port: 8080
 spring:
+  main:
+    allow-circular-references: true
   kafka:
     bootstrap:
-      servers: ${KAFKA_BOOTSTRAPSERVERS:kafka:29092}
+      servers: kafka:29092
   application:
     name: ms-gestiona-transaction
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/BdPrueba}
-    username: ${DATABASE_USERNAME:postgres}
-    password: ${DATABASE_PASSWORD:1234}
+    url: jdbc:postgresql://server_postgres:5432/postgres
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 5
       minimum-idle: 2
@@ -26,3 +29,8 @@ spring:
   sql:
     init:
       platform: postgres
+
+logging:
+  level:
+    org.hibernate: DEBUG
+    org.postgresql: DEBUG

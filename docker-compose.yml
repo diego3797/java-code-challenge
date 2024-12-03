@@ -1,19 +1,17 @@
-version: "3.7"
-
 services:
-  postgres:
+  server_postgres:
     image: postgres:14
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: BdPrueba
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-scripts:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d BdPrueba"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -48,46 +46,6 @@ services:
       kafka-topics --create --topic topic-crea-transaction --bootstrap-server kafka:29092 --partitions 3 --replication-factor 1 &&
       kafka-topics --create --topic topic-valida-transaction --bootstrap-server kafka:29092 --partitions 3 --replication-factor 1
       "
-    networks:
-      - microservices-net
-  ms-gestiona-transaction:
-    image: ms-gestiona-transaction:latest
-    container_name: ms_gesttransaction_container
-    build:
-      context: ./ms-gestiona-transaction
-      dockerfile: Dockerfile
-    environment:
-      - DATABASE_URL=jdbc:postgresql://postgres:5432/BdPrueba
-      - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=postgres
-      - KAFKA_BOOTSTRAPSERVERS=kafka:29092
-    ports:
-      - "8080:8080"
-    depends_on:
-      postgres:
-        condition: service_healthy
-      kafka:
-        condition: service_started
-    networks:
-      - microservices-net
-  ms-antifraude:
-    image: ms-antifraude:latest
-    container_name: ms_antifraude_container
-    build:
-      context: ./ms-antifraude
-      dockerfile: Dockerfile
-    environment:
-      - DATABASE_URL=jdbc:postgresql://postgres:5432/BdPrueba
-      - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=postgres
-      - KAFKA_BOOTSTRAPSERVERS=kafka:29092
-    ports:
-      - "8081:8081"
-    depends_on:
-      postgres:
-        condition: service_healthy
-      kafka:
-        condition: service_started
     networks:
       - microservices-net
 
